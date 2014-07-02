@@ -24,6 +24,8 @@ sed -i "/^# DO NOT DISABLE\!/i host all all 0.0.0.0/0 md5\n\n\n" /data/pg_hba.co
 # Start postgres
 su postgres --command "/usr/lib/postgresql/9.3/bin/postgres -D /data/main -c config_file=/data/postgresql.conf" &
 
+sleep 5
+
 # As the user postgres, create a user named docker
 su postgres --command 'createuser -P -d -r -s docker'
 
