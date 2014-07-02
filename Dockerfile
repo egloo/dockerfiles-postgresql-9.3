@@ -33,7 +33,7 @@ RUN apt-get -y upgrade
 RUN apt-get install -y build-essential git
 RUN apt-get install -y python-software-properties software-properties-common
 
-RUN apt-get install -y postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 postgresql-devel libpq-dev libssl-dev
+RUN apt-get install -y postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 libpq-dev libssl-dev
 RUN apt-get install -y wget pgtune apg
 
 VOLUME ["/data"]
