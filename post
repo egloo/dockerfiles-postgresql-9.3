@@ -36,9 +36,10 @@ su postgres --command 'createdb -O docker docker'
 
 password=${MASTER_PASSWORD:-$(< /dev/urandom tr -dc A-Za-z0-9 | head -c 32)}
 su postgres --command 'psql -U postgres -c "ALTER USER postgres with password '"'$password'"';" >/dev/null 2>&1'
-echo "  pass   $password"
-echo "  user   postgres"
-su postgres --command 'psql -U postgres -c "UPDATE pg_database SET datistemplate=FALSE WHERE datname='"'template1'"';DROP DATABASE template1;CREATE DATABASE template1 WITH owner=postgres template=template0 encoding='"'UTF8'"';UPDATE pg_database SET datistemplate=TRUE WHERE datname='"'template1'"';"'
+
+echo " ** USER: postgres"
+echo " ** PASSWORD: $password"
+
 pgtune -i /data/postgresql.conf -o /data/postgresql.conf  -TWeb -M`free  -ob| grep Mem: | awk '{ printf "%d",$2 }'`
 
 # Shutdown postgres
