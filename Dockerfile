@@ -19,28 +19,30 @@ MAINTAINER eGloo
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-# RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe" > /etc/apt/sources.list
 
-# RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security main restricted" >> /etc/apt/sources.list
-# RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted" >> /etc/apt/sources.list
-# RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security universe" >> /etc/apt/sources.list
-# RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security universe" >> /etc/apt/sources.list
-# RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security multiverse" >> /etc/apt/sources.list
-# RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security main restricted" >> /etc/apt/sources.list
+#RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted" >> /etc/apt/sources.list
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security universe" >> /etc/apt/sources.list
+#RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security universe" >> /etc/apt/sources.list
+RUN echo "deb http://security.ubuntu.com/ubuntu trusty-security multiverse" >> /etc/apt/sources.list
+#RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse" >> /etc/apt/sources.list
 
-RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty main universe" > /etc/apt/sources.list
+#RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty main universe" > /etc/apt/sources.list
 
-RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security main restricted" >> /etc/apt/sources.list
-RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security main restricted" >> /etc/apt/sources.list
-RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security universe" >> /etc/apt/sources.list
-RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security universe" >> /etc/apt/sources.list
-RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security multiverse" >> /etc/apt/sources.list
-RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security multiverse" >> /etc/apt/sources.list
+#RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security main restricted" >> /etc/apt/sources.list
+#RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security main restricted" >> /etc/apt/sources.list
+#RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security universe" >> /etc/apt/sources.list
+#RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security universe" >> /etc/apt/sources.list
+#RUN echo "deb ftp://10.10.14.248/ubuntu/ trusty-security multiverse" >> /etc/apt/sources.list
+#RUN echo "deb-src ftp://10.10.14.248/ubuntu/ trusty-security multiverse" >> /etc/apt/sources.list
 
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install -y build-essential git
+RUN apt-get install -y libc6
+RUN apt-get install -y libc6-dev build-essential git
 RUN apt-get install -y python-software-properties software-properties-common
 
 RUN apt-get install -y postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 libpq-dev libssl-dev
