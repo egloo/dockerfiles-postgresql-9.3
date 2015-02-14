@@ -39,6 +39,7 @@ RUN echo "deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse" 
 
 
 RUN apt-get update
+RUN apt-get clean
 RUN apt-get -y upgrade
 RUN apt-get install -y build-essential git
 RUN apt-get install -y python-software-properties software-properties-common
