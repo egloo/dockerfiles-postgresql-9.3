@@ -19,6 +19,8 @@ MAINTAINER eGloo
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
+RUN cat /etc/apt/sources.list
+
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN echo "deb-src http://archive.ubuntu.com/ubuntu trusty main universe" >> /etc/apt/sources.list
 
