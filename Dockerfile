@@ -30,6 +30,10 @@ RUN apt-get install -y python-software-properties software-properties-common
 RUN apt-get install -y postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 libpq-dev libssl-dev
 RUN apt-get install -y wget pgtune apg
 
+RUN mkdir -p /var/run/postgresql/9.3-main.pg_stat_tmp
+RUN chown postgres /var/run/postgresql/9.3-main.pg_stat_tmp
+RUN chgrp postgres /var/run/postgresql/9.3-main.pg_stat_tmp
+
 VOLUME ["/data"]
 
 EXPOSE 5432
